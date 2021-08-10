@@ -1,6 +1,9 @@
-package com.muhammed.sabry.musalaapi.repository;
+package com.muhammed.sabry.musalaapi.repository.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,13 +15,12 @@ import java.util.List;
 @Builder()
 @NoArgsConstructor()
 @AllArgsConstructor()
-@RequiredArgsConstructor()
 public class GatewayEntity {
 	@Id
 	private String UUID;
 	private String name;
 	private String address;
-	@OneToMany()
+	@OneToMany(orphanRemoval = true, mappedBy = "gateway")
 	private List<DeviceEntity> deviceList;
 	
 	public GatewayEntity(String UUID) {

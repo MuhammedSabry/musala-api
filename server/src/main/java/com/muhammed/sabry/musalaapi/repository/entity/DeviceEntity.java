@@ -1,6 +1,7 @@
-package com.muhammed.sabry.musalaapi.repository;
+package com.muhammed.sabry.musalaapi.repository.entity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,12 +15,13 @@ import static javax.persistence.FetchType.LAZY;
 @Data
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class DeviceEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer ID;
 	@ManyToOne(fetch = LAZY)
-	@JoinColumn(name = "UUID")
+	@JoinColumn(name = "GATEWAY_UUID")
 	private GatewayEntity gateway;
 	private String vendor;
 	private Date createDate;

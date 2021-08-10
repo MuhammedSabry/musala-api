@@ -7,12 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MusalaApiApplication {
 	
 	public static void main(String[] args) {
-		createDb();
 		SpringApplication.run(MusalaApiApplication.class, args);
-	}
-	
-	private static void createDb() {
-	
 	}
 	
 }
