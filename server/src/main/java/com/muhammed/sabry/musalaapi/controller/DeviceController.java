@@ -72,9 +72,6 @@ public class DeviceController {
 		deviceEntity.setCreateDate(new Date());
 		deviceEntity.setGateway(new GatewayEntity(gatewayID));
 		deviceEntity.setID(0);
-		DeviceEntity savedEntity = deviceRepository.save(deviceEntity);
-
-//		gatewayEntity.getDeviceList().add(savedEntity);
-//		gatewayRepository.save(gatewayEntity);
+		deviceRepository.save(deviceEntity);
 	}
 }
