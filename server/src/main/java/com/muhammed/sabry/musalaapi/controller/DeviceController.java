@@ -38,9 +38,14 @@ public class DeviceController {
 	@PutMapping("/device")
 	public void updateDevice(@RequestBody Device device) {
 		DeviceEntity deviceEntity = this.deviceRepository.findById(device.getID()).orElse(null);
-		if (deviceEntity != null)
-			this.deviceRepository.save(new DeviceMapper().mapToEntity(device));
-		else
+		if (deviceEntity != null) {
+			DeviceEntity mappedEntity = new DeviceMapper().mapToEntity(device);
+			// Not allowing changing of gateway
+			mappedEntity.setGateway(deviceEntity.getGateway());
+			// Not allowing changing of creation date
+			mappedEntity.setCreateDate(deviceEntity.getCreateDate());
+			this.deviceRepository.save(mappedEntity);
+		} else
 			throw new NotFoundException(String.format("Device with ID %s not found", device.getID()));
 		
 	}
